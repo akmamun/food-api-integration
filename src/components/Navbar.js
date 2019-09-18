@@ -27,7 +27,7 @@ class Navbar extends Component {
                 </Link>
                 <button onClick={this.showMenu} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
+                    <span className="navbar-toggler-icon"/>
                 </button>
                 <div className={on} id="navbarSupportedContent">
                     <ul className="navbar-nav ml-auto mr-5">
