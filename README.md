@@ -1,4 +1,4 @@
-## React Food API Integration of food2fork
+## React FoodList API Integration of food2fork
 
 ### In [Api](src/api.js) File Define all routes
 ```js
