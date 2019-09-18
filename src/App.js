@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from "react-router-dom";
  
 import Navbar from './components/Navbar';
-import TodoList from "./components/todo/TodoList";
+import Food from "./components/Food";
 
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
       <>
         <Navbar />
         <Switch>
-          <Route path="/" component={TodoList} exact />
+          <Route path="/" component={Food} exact />
          
         </Switch>
       </>
