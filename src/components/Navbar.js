@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { NavLink, Link } from "react-router-dom";
+import {localRoute} from "../route";
  
 class Navbar extends Component {
     state = {
@@ -32,22 +33,10 @@ class Navbar extends Component {
                 <div className={on} id="navbarSupportedContent">
                     <ul className="navbar-nav ml-auto mr-5">
                         <li className="nav-item">
-                            <NavLink to="/"className="nav-link">
+                            <NavLink to={localRoute.home} className="nav-link">
                                 Home
                             </NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink to="/todo/add" className="nav-link">
-                                Add Todo
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink to="/" className="nav-link">
-                                Todo
-                            </NavLink>
-                        </li>
-
-                 
                     </ul>
                 </div>
             </nav>

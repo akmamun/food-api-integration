@@ -1,0 +1,30 @@
+/*Food List*/
+.search{
+   float: right;
+}
+.customCard{
+   height: 320px;
+   margin-bottom: 7px;
+}
+.product{
+   color: #000000;
+}
+.product:hover {
+   text-decoration: none;
+   color: #000000;
+}
+.product h6{
+   font-size: 17px;
+}
+.productImage{
+   width: 300px;
+   height: 200px;
+   margin-bottom: 5px;
+   -o-object-fit: contain;
+   object-fit: contain;
+}
+.customBadge {
+   background: red;
+   margin: 0 10px;
+   color: #ffffff;
+}
