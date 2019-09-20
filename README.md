@@ -1,5 +1,12 @@
 ## Food App Integration of [food2fork](https://www.food2fork.com/about/api) API
 
+# Add API KEY to [route](src/route.js)
+- food2fork gives only 50 api calling for free, if don't show
+any data create an account in [food2fork](https://www.food2fork.com/default/user/register)
+and copy API Key from [here](https://www.food2fork.com/user/api) and added to [route](src/route.js)
+```sh
+const apiKey = "food2fork api key";
+```
 # Code Architecture
 ## State Management
 - Use react core state management
@@ -49,11 +56,4 @@ api.endpoint(url).getOne({id})
 api.endpoint(url).create( data)
 api.endpoint(url).update({ id }, data)
 api.endpoint(url).delete({ id })
-```
-# N.B.
-food2fork gives only 50 api calling for free, if don't show
-any data create an account in [food2fork](https://www.food2fork.com/default/user/register)
-and copy API Key from [here](https://www.food2fork.com/user/api) and added it to [route](src/route.js)
-```sh
-const apiKey = "food2fork api key";
 ```

@@ -1,4 +1,4 @@
-const apiKey = "2448925185d7afb1373225b71fe28489";
+const apiKey = " API key from food2fork";
 
 export const apiRoute = {
     apiBase: "https://www.food2fork.com/api",
