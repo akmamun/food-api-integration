@@ -2,27 +2,40 @@ import React, {Component} from "react";
 import api from "../../api";
 import {apiRoute, localRoute} from "../../route";
 import {Link} from "react-router-dom";
+import styles from "./FoodList.module.css";
 
 export default class Food extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            food: []
+            food: [],
+            suggestion: []
         };
     }
 
-    componentDidMount() {
-        const id = this.props.match.params.id;
-        api.endpoint(apiRoute.recipe).getOne(id)
-            .then(response => this.setState({food: response.data.recipe || []}));
+    async componentDidMount() {
+        await this.getFood();
+        await this.getSuggestion();
     }
 
-    render() {
+    getFood = async () => {
+        const id = this.props.match.params.id;
+        const response = await api.endpoint(apiRoute.recipe).getOne(id);
+        this.setState({food: response.data.recipe || []});
+    };
+
+    getSuggestion = async () => {
         const {food} = this.state;
-        console.log(food)
+        const firstWord = food.title && food.title.split(" ")[0];
+        const response = await api.endpoint(apiRoute.suggestion + firstWord).getAll();
+        this.setState({suggestion: response.data.recipes || []})
+    };
+
+    render() {
+        const {food, suggestion} = this.state;
         return (
             <div className="container">
-                <Link to={localRoute.home}>Back</Link>
+                <Link to={localRoute.home}> &#8701; Back </Link>
                 <div className="col-lg-7 offset-lg-3">
                     <div className="card">
                         <div className="card-body">
@@ -31,8 +44,7 @@ export default class Food extends Component {
                                  className="img-fluid" alt=""/>
                             <div>
                                 <h6 className="mt-3">ingredients</h6>
-                                {food.ingredients
-                                && food.ingredients.map((f, i) =>
+                                {food.ingredients && food.ingredients.map((f, i) =>
                                     <li className="list-unstyled ml-4" key={i}>
                                         {f}
                                     </li>
@@ -40,6 +52,26 @@ export default class Food extends Component {
                             </div>
                         </div>
                     </div>
+                </div>
+                <h6 className="mt-5">You May Also Like </h6>
+                <div className="row">
+                    {suggestion && suggestion.slice(0, 8).map((s, index) => (
+                        <div key={index} className="col-lg-4 col-md-6">
+                            <div className={`card ${styles.customCard}`}>
+                                <div className="card-body">
+                                    <Link to={`${localRoute.food}/${s.recipe_id}`} target="_blank"
+                                          className={styles.product}>
+                                        <img src={s.image_url}
+                                             className={styles.productImage}
+                                             alt={s.title}/>
+                                        <h6>{s.title}</h6>
+                                        <span>{s.publisher}</span>
+                                        <span className={`badge ${styles.customBadge}`}>{parseInt(s.social_rank)}</span>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         );

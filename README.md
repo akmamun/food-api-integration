@@ -1,6 +1,14 @@
-## React FoodList API Integration of food2fork
+## Food App Integration of [food2fork](https://www.food2fork.com/about/api) API
 
-### In [Api](src/api.js) File Define all routes
+# Code Architecture
+## State Management
+- Use react core state management
+
+## Component Structure and module CSS
+- `filename.module.css`: use module css for avoid global css issue
+- global css contains only `App.css` and `index.css` file
+
+### In [Api](src/api.js) File Define api helper  
 ```js
 import axios from "axios";
 
@@ -31,13 +39,21 @@ export default {
         }
     },
 }
-
 ```
-### Uses of route
+### [route](src/route.js) contains `apiRoute` and `localRoute` route.
+- In this file `apiRoute` contains api route where define all api endpoint and `localRoute` contains local traverse route which responsible for traverse from react app 
+### Uses of [api](src/api.js) helper and [route](src/route.js) 
 ```js
 api.endpoint(url).getAll()
 api.endpoint(url).getOne({id})
 api.endpoint(url).create( data)
 api.endpoint(url).update({ id }, data)
-api.endpoint(url)).delete({ id })
+api.endpoint(url).delete({ id })
+```
+# N.B.
+food2fork gives only 50 api calling for free, if don't show
+any data create an account in [food2fork](https://www.food2fork.com/default/user/register)
+and copy API Key from [here](https://www.food2fork.com/user/api) and added it to [route](src/route.js)
+```sh
+const apiKey = "food2fork api key";
 ```

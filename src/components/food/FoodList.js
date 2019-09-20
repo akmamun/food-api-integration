@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import api from '../../api';
 import {apiRoute, localRoute} from "../../route";
-import styles from "./Index.module.css";
+import styles from "./FoodList.module.css";
 
 export default class FoodList extends Component {
     state = {
@@ -47,7 +47,7 @@ export default class FoodList extends Component {
                                              alt={d.title}/>
                                         <h6>{d.title}</h6>
                                         <span>{d.publisher}</span>
-                                        <span className={`badge ${styles.customBadge}`}>{d.social_rank}</span>
+                                        <span className={`badge ${styles.customBadge}`}>{parseInt(d.social_rank)}</span>
                                     </Link>
                                 </div>
                             </div>
